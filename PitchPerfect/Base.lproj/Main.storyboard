@@ -19,36 +19,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpJ-rg-M3i">
-                                <state key="normal" image="recordButton"/>
-                                <connections>
-                                    <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pgj-JC-4NI"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yo1-xQ-XHf">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXo-Nc-hn9">
-                                <state key="normal" image="stopButton"/>
-                                <connections>
-                                    <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bG8-35-oJ4"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ZIQ-Fb-0Lb" userLabel="Outer Stack View">
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0Cf-Pz-IQp" userLabel="Inner Stack View Row 1">
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpJ-rg-M3i">
+                                                <state key="normal" image="recordButton"/>
+                                                <connections>
+                                                    <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pgj-JC-4NI"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BjI-Ys-Q4k" userLabel="Inner Stack View Row 2">
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXo-Nc-hn9">
+                                                <state key="normal" image="stopButton"/>
+                                                <connections>
+                                                    <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bG8-35-oJ4"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KR2-iX-5mk" userLabel="Inner Stack View Row 3">
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yo1-xQ-XHf">
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="mpJ-rg-M3i" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3Zg-vP-mf8"/>
-                            <constraint firstItem="eXo-Nc-hn9" firstAttribute="top" secondItem="yo1-xQ-XHf" secondAttribute="bottom" constant="17" id="96A-rX-3yp"/>
-                            <constraint firstItem="mpJ-rg-M3i" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="S9W-Dx-AmS"/>
-                            <constraint firstItem="eXo-Nc-hn9" firstAttribute="centerX" secondItem="yo1-xQ-XHf" secondAttribute="centerX" id="Ykf-c6-62y"/>
-                            <constraint firstItem="yo1-xQ-XHf" firstAttribute="top" secondItem="mpJ-rg-M3i" secondAttribute="bottom" constant="22" id="epn-r8-wOa"/>
-                            <constraint firstItem="yo1-xQ-XHf" firstAttribute="centerX" secondItem="mpJ-rg-M3i" secondAttribute="centerX" id="kJM-fE-aTX"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZIQ-Fb-0Lb" secondAttribute="bottom" id="8GV-Fd-bOt"/>
+                            <constraint firstItem="ZIQ-Fb-0Lb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8f4-KO-YgM"/>
+                            <constraint firstItem="ZIQ-Fb-0Lb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="jDH-O8-fxG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZIQ-Fb-0Lb" secondAttribute="trailing" id="mx8-cT-vKN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="UUY-yC-ZPC"/>
                     <connections>
+                        <outlet property="innerStackViewRow1" destination="0Cf-Pz-IQp" id="HNZ-dg-hl1"/>
+                        <outlet property="innerStackViewRow2" destination="BjI-Ys-Q4k" id="Po5-27-K0a"/>
+                        <outlet property="innerStackViewRow3" destination="KR2-iX-5mk" id="NXs-Dc-kUi"/>
+                        <outlet property="outerStackView" destination="ZIQ-Fb-0Lb" id="G5c-ey-4n0"/>
                         <outlet property="recordButton" destination="mpJ-rg-M3i" id="dyW-ke-6ML"/>
                         <outlet property="recordingLabel" destination="yo1-xQ-XHf" id="1x8-kM-e55"/>
                         <outlet property="stopRecordingButton" destination="eXo-Nc-hn9" id="Mhm-dd-Pfa"/>
@@ -71,9 +89,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4ol-2Q-Ny2">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4ol-2Q-Ny2" userLabel="Outer Stack View">
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cLP-z0-yRh">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cLP-z0-yRh" userLabel="Inner Stack View Row 1">
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Cb-D6-0bq" userLabel="SnailButton">
                                                 <state key="normal" image="SnailButton"/>
@@ -89,7 +107,7 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bbu-gI-VZ6">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bbu-gI-VZ6" userLabel="Inner Stack View Row 2">
                                         <subviews>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aty-bz-vhv" userLabel="ChipmunkButton">
                                                 <state key="normal" image="ChipmunkButton"/>
@@ -105,7 +123,7 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Xz5-Mm-3XM">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Xz5-Mm-3XM" userLabel="Inner Stack View Row 3">
                                         <subviews>
                                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xzx-rY-VEF" userLabel="EchoButton">
                                                 <state key="normal" image="EchoButton"/>
@@ -121,7 +139,7 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Q2N-cA-UVR">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Q2N-cA-UVR" userLabel="Inner Stack View Row 4">
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="S9m-3b-JS9">
                                                 <subviews>
@@ -149,6 +167,11 @@
                     <connections>
                         <outlet property="chipmunkButton" destination="aty-bz-vhv" id="rsi-FY-HhW"/>
                         <outlet property="echoButton" destination="Xzx-rY-VEF" id="6wM-7q-Fia"/>
+                        <outlet property="innerStackViewRow1" destination="cLP-z0-yRh" id="mAO-Tg-KgC"/>
+                        <outlet property="innerStackViewRow2" destination="bbu-gI-VZ6" id="KEm-DO-Cj9"/>
+                        <outlet property="innerStackViewRow3" destination="Xz5-Mm-3XM" id="kSl-gc-EOj"/>
+                        <outlet property="innerStackViewRow4" destination="Q2N-cA-UVR" id="7Ye-qK-sun"/>
+                        <outlet property="outerStackView" destination="4ol-2Q-Ny2" id="h66-yd-huS"/>
                         <outlet property="rabbitButton" destination="XDr-Ho-RRZ" id="plw-CS-5Xf"/>
                         <outlet property="reverbButton" destination="QTM-cA-u6Z" id="NnK-AS-g0J"/>
                         <outlet property="snailButton" destination="5Cb-D6-0bq" id="spZ-JY-tmd"/>

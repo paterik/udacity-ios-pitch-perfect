@@ -11,8 +11,9 @@ import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
 
+    //
     // MARK: Outlets
-    
+    //
     @IBOutlet weak var snailButton: UIButton!
     @IBOutlet weak var chipmunkButton: UIButton!
     @IBOutlet weak var rabbitButton: UIButton!
@@ -21,30 +22,49 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var reverbButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     
+    @IBOutlet weak var outerStackView: UIStackView!
+    @IBOutlet weak var innerStackViewRow1: UIStackView!
+    @IBOutlet weak var innerStackViewRow2: UIStackView!
+    @IBOutlet weak var innerStackViewRow3: UIStackView!
+    @IBOutlet weak var innerStackViewRow4: UIStackView!
+    
+    //
+    // MARK: Internal Variables
+    //
     var recordedAudioURL: NSURL!
     var audioFile: AVAudioFile!
     var audioEngine: AVAudioEngine!
     var audioPlayerNode: AVAudioPlayerNode!
     var stopTimer: Timer!
+    enum ButtonType: Int {
+        case Slow = 0, Fast, Chipmunk, Vader, Echo, Reverb
+    }
     
-    enum ButtonType: Int { case Slow = 0, Fast, Chipmunk, Vader, Echo, Reverb }
+    //
+    // MARK: ViewController Overrides
+    //
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: { (context) -> Void in
+            self.setStackViewLayout()
+            }, completion: nil
+        )
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("PlaySoundViewController loaded")
+        setStackViewLayout()
         setupAudio()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configureUI(playState: .NotPlaying)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
+    //
     // MARK: Actions
-    
+    //
     @IBAction func playSoundForButton(sender: UIButton) {
         print("Play Sound Button Pressed \(sender.tag)")
         
@@ -71,5 +91,26 @@ class PlaySoundsViewController: UIViewController {
         
         stopAudio()
     }
-
+    
+    //
+    // MARK: UI Functions
+    //
+    func setInnerStackViewsAxis(axisStyle: UILayoutConstraintAxis)  {
+        self.innerStackViewRow1.axis = axisStyle
+        self.innerStackViewRow2.axis = axisStyle
+        self.innerStackViewRow3.axis = axisStyle
+        self.innerStackViewRow4.axis = axisStyle
+    }
+    
+    func setStackViewLayout() {
+        let orientation = UIApplication.shared.statusBarOrientation
+        
+        if orientation.isPortrait{
+            self.outerStackView.axis = .vertical
+            self.setInnerStackViewsAxis(axisStyle: .horizontal)
+        } else {
+            self.outerStackView.axis = .horizontal
+            self.setInnerStackViewsAxis(axisStyle: .vertical)
+        }
+    }
 }
