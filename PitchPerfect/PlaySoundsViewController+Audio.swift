@@ -8,6 +8,7 @@ import UIKit
 import AVFoundation
 
 extension PlaySoundsViewController: AVAudioPlayerDelegate {
+    
     struct Alerts {
         static let DismissAlert = "Dismiss"
         static let RecordingDisabledTitle = "Recording Disabled"
@@ -23,10 +24,10 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
     
     // raw values correspond to sender tags
     enum PlayingState { case Playing, NotPlaying }
-
     
+    //
     // MARK: Audio Functions
-    
+    //
     func setupAudio() {
         // initialize (recording) audio file
         do {
@@ -105,13 +106,13 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
             return
         }
         
-        // play the recording!
         audioPlayerNode.play()
     }
     
     
+    //
     // MARK: Connect List of Audio Nodes
-    
+    //
     func connectAudioNodes(nodes: AVAudioNode...) {
         for x in 0..<nodes.count-1 {
             audioEngine.connect(nodes[x], to: nodes[x+1], format: audioFile.processingFormat)
@@ -136,9 +137,9 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         }
     }
     
-    
+    //
     // MARK: UI Functions
-
+    //
     func configureUI(playState: PlayingState) {
         switch(playState) {
         case .Playing:
@@ -159,7 +160,6 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         reverbButton.isEnabled = enabled
     }
 
-    
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Alerts.DismissAlert, style: .default, handler: nil))
