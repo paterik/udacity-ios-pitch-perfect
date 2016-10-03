@@ -4,8 +4,19 @@ All notable changes of PitchPerfect release series are documented in this file u
 
 _This PitchPerfect changelog documentation start with version 1.0.0 (2016/10/03)_
 
-## [1.0.0], 2016/10/03:
+## [1.0.1], 2016/10/03:
 _current_
+
+### Fixed
+* landscape orientation issues on smaller devices
+* missing super.calls inside base/internal controller functions
+* refactoring caused by code duplication
+
+### Added
+* using UIStackView inside RecordSoundViewController
+
+
+## [1.0.0], 2016/10/03:
 
 ### Fixed
 
