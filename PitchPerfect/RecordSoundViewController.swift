@@ -55,7 +55,7 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        handleControls(isRecording: false)
+        setInProgressMode(inProgress: false)
     }
 
     //
@@ -75,7 +75,7 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func recordAudio(_ sender: AnyObject) {
         print("record button pressed")
         
-        handleControls(isRecording: true)
+        setInProgressMode(inProgress: true)
         
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)[0] as String
         let recordingName = recordFileName
@@ -97,7 +97,7 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func stopRecording(_ sender: AnyObject) {
         print("stop recording button pressed")
         
-        handleControls(isRecording: false)
+        setInProgressMode(inProgress: false)
         audioRecorder.stop()
         
         let audioSession = AVAudioSession.sharedInstance()
@@ -107,26 +107,21 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     //
     // MARK: internal functions
     //
-    func handleControls(isRecording: Bool) {
-        
-        recordButton.isEnabled = true
-        stopRecordingButton.isEnabled = false
-        recordingLabel.text = "Tap to record"
-        
-        if (isRecording) {
-            recordingLabel.text = "Recording in progress"
-            recordButton.isEnabled = false
-            stopRecordingButton.isEnabled = true
-        }
+    func setInProgressMode(inProgress: Bool) {
+        recordingLabel.text = inProgress ? "Recording in Progress" : "Recording Done"
+        recordButton.isEnabled = !inProgress
+        stopRecordingButton.isEnabled = inProgress
     }
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        
         if (flag) {
             print("AVAudioRecorder finished was saving your record, perform segue now")
             performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
         } else {
-            print("Saving your record was failing")
+            
+            let alert = UIAlertController(title: "Audio Recorder Error", message: "Saving your record was failing", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
