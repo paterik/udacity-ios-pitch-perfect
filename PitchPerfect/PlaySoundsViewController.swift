@@ -14,6 +14,7 @@ class PlaySoundsViewController: UIViewController {
     //
     // MARK: Outlets
     //
+    
     @IBOutlet weak var snailButton: UIButton!
     @IBOutlet weak var chipmunkButton: UIButton!
     @IBOutlet weak var rabbitButton: UIButton!
@@ -29,8 +30,15 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var innerStackViewRow4: UIStackView!
     
     //
+    // MARK: Constants
+    //
+    
+    let debugMode: Bool = true
+    
+    //
     // MARK: Internal Variables
     //
+    
     var recordedAudioURL: NSURL!
     var audioFile: AVAudioFile!
     var audioEngine: AVAudioEngine!
@@ -43,6 +51,7 @@ class PlaySoundsViewController: UIViewController {
     //
     // MARK: ViewController Overrides
     //
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animate(alongsideTransition: { (context) -> Void in
             self.setStackViewLayout()
@@ -51,14 +60,19 @@ class PlaySoundsViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        print("PlaySoundViewController loaded")
+        
+        if debugMode { print("PlaySoundViewController loaded") }
+        
         setStackViewLayout()
         setupAudio()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
+        
         configureUI(playState: .NotPlaying)
     }
     
@@ -66,7 +80,8 @@ class PlaySoundsViewController: UIViewController {
     // MARK: Actions
     //
     @IBAction func playSoundForButton(sender: UIButton) {
-        print("Play Sound Button Pressed \(sender.tag)")
+        
+        if debugMode { print("Play Sound Button Pressed \(sender.tag)") }
         
         switch(ButtonType(rawValue: sender.tag)!) {
         case .Slow:
@@ -87,7 +102,8 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func stopButtonPressed(_ sender: AnyObject) {
-        print("Stop Audio Button Pressed")
+        
+        if debugMode { print("Stop Audio Button Pressed") }
         
         stopAudio()
     }
@@ -103,14 +119,15 @@ class PlaySoundsViewController: UIViewController {
     }
     
     func setStackViewLayout() {
+        
         let orientation = UIApplication.shared.statusBarOrientation
         
-        if orientation.isPortrait{
+        self.outerStackView.axis = .horizontal
+        self.setInnerStackViewsAxis(axisStyle: .vertical)
+        
+        if orientation.isPortrait {
             self.outerStackView.axis = .vertical
             self.setInnerStackViewsAxis(axisStyle: .horizontal)
-        } else {
-            self.outerStackView.axis = .horizontal
-            self.setInnerStackViewsAxis(axisStyle: .vertical)
         }
     }
 }
