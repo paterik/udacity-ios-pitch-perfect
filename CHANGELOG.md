@@ -4,8 +4,21 @@ All notable changes of PitchPerfect release series are documented in this file u
 
 _This PitchPerfect changelog documentation start with version 1.0.0 (2016-10-03)_
 
-## [1.0.2], 2016-10-05:
+## [1.0.3], 2017-04-11:
 _current_
+
+## Added
+
+* debugMode flag to print out debug-related output
+* splashScreen
+* documentation
+
+## Changes
+
+* reafactoring of current code base
+
+
+## [1.0.2], 2016-10-05:
 
 ### Fixed
 
