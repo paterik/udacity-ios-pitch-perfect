@@ -33,7 +33,7 @@ Splash Screen             |  Record View               |  Sampler View
 ![splash screen](github/media/PP_launchScreen_v1.png)  |  ![record view](github/media/PP_audioRecord_v1.png) |  ![sampler view](github/media/PP_voiceSelect_v1.png)
 
 ## Keywords
-swift, swift-3, udacity, extension, uikit, AVFoundation, app
+swift, swift-3, udacity, extension, uikit, AVFoundation, foundation, app
 
 ## Releases
 
