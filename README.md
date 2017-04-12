@@ -41,7 +41,7 @@ PitchPerfect is currently available in [4 releases](https://github.com/paterik/u
 
 ## Changelog
 
-All notable changes of the PitchPerfect release series are documented in project [CHANGELOG.md](CHANGELOG.md) file using the [Keep a CHANGELOG](http://keepachangelog.com/) prtheinciples. The changelog documentation starts with version 1.0.0 (2016-10-03).
+All notable changes of the PitchPerfect release series are documented in project [CHANGELOG.md](CHANGELOG.md) file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles. The changelog documentation starts with version 1.0.0 (2016-10-03).
 
 ## License-Term
 
